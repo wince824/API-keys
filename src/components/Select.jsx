@@ -1,16 +1,19 @@
-export default function SelectField(props) {
-  const { placeholder, id, options, value, onSelect } = props
+import React from "react";
 
-  // eslint-disable-next-line jsx-a11y/aria-role
-  return (<section role="dropdown">
-    <select defaultValue={value} onChange={(e) => onSelect(e.target.value)} list={id} id={id}>
-      <option value=""> {placeholder}</option>
-      {
-        options.map((val) => <option key={val} 
-        >
-        {val}
-        </option>)
-      }
+export default function SelectField({ placeholder, id, options, onSelect, value }) {
+  return (
+    <select
+      id={id}
+      value={value}
+      onChange={(e) => onSelect(e.target.value)}
+      className="select-field"
+    >
+      <option value="">{placeholder}</option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
     </select>
-  </section>)
+  );
 }
